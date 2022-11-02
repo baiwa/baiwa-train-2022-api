@@ -1,0 +1,45 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        #show sql values
+        type:
+          descriptor:
+            sql: trace
+
+server:
+  port: 9020
+  servlet:
+    context-path: /test-api
+
+spring:
+  jmx:
+    enabled: false
+  jackson:
+#    property-naming-strategy: SNAKE_CASE
+    serialization:
+      fail-on-empty-beans: false
+  flyway:
+    enabled: false
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc-url: jdbc:sqlserver://49.0.80.15:7002;databaseName=DATABASE_FOR_TEST;useUnicode=true;characterEncoding=UTF-8;encrypt=false;trustServerCertificate=false
+    username: developer
+    password: Baiwa123
+  jpa:
+    database: sql_server
+    show-sql: false
+    properties:
+      hibernate:
+        order_inserts: true
+        generate_statistics: false
+
+application:
+  cors:
+    enable: false
+    allowed-origins: "*"
+    allowed-headers: "*"
+    allowed-methods: "*"
+    allow-credentials: false
+    max-age: 1800
