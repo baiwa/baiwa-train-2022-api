@@ -1,5 +1,6 @@
 package com.example.demo.project.feature.products.service;
 
+import com.example.demo.project.common.entity.ProductTaEntity;
 import com.example.demo.project.common.repository.ProductTaRepository;
 import com.example.demo.project.feature.products.model.ProductModel;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,18 @@ public class ProductService {
             dataAll.add(resData);
         });
         return dataAll;
+    }
+
+    public ProductModel.Product save(ProductModel.Product req){
+        ProductTaEntity data = new ProductTaEntity();
+        data.setProductName(req.getProductName());
+        data.setProductWeight(req.getProductWeight());
+        data.setProductPrice(req.getProductPrice());
+        data.setProductType(req.getProductType());
+        data.setProductBrand(req.getProductBrand());
+        data.setProductType(req.getProductType());
+        productTaRepository.save(data);
+        return req;
     }
 
 
