@@ -4,9 +4,7 @@ import com.example.demo.project.feature.products.model.ProductModel;
 import com.example.demo.project.feature.products.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,20 @@ public class ProductController {
     @GetMapping("/get-all")
     public ResponseEntity<List<ProductModel.Product>>getAll(){
         return ResponseEntity.ok(productService.getAll());
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<ProductModel.Product>save(@RequestBody ProductModel.Product req){
+        return ResponseEntity.ok(productService.save(req));
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<String>delete(@RequestBody ProductModel.Product req){
+        return ResponseEntity.ok(productService.delete(req));
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?>update(@RequestBody ProductModel.Product req){
+        return ResponseEntity.ok(productService.edit(req));
     }
 }
